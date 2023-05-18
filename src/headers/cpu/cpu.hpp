@@ -1,17 +1,20 @@
 #pragma once
-#ifndef _CPU_HPP_
-#define _CPU_HPP_
+#ifndef _GAMEBOY_CPU_HPP_
+#define _GAMEBOY_CPU_HPP_
 
 namespace GameBoy
 {
-    class CPU 
+    namespace CPU
     {
-        public:
-            CPU();
-            ~CPU();
+        class CPU 
+        {
+            public:
+                CPU();
+                ~CPU();
 
-        private:
+            private:
 
-    };
+        };
+    }
 }
-#endif // _CPU_HPP_
+#endif // _GAMEBOY_CPU_HPP_

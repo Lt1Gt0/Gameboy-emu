@@ -10,14 +10,16 @@
 using std::string;
 using std::vector;
 
-auto inline strFormat(const char* fmt, va_list args) -> string {
+auto inline strFormat(const char* fmt, va_list args) -> string
+{
     char buf[8192];
     vsnprintf(buf, 8192, fmt, args);
 
     return string(buf);
 }
 
-auto inline strFormat(const char* fmt, ...) -> string {
+auto inline strFormat(const char* fmt, ...) -> string
+{
     char buf[8192];
     va_list args;
 
@@ -28,7 +30,8 @@ auto inline strFormat(const char* fmt, ...) -> string {
     return string(buf);
 }
 
-auto inline split(const string& str, char delim) -> vector<string> {
+auto inline split(const string& str, char delim) -> vector<string>
+{
     vector<string> elems;
     string item;
 

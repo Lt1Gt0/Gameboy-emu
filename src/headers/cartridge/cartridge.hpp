@@ -4,14 +4,17 @@
 
 namespace GameBoy
 {
-    class Cartridge
+    namespace Cartridge
     {
-        public:
-            Cartridge();
-            ~Cartridge();
+        class Cartridge
+        {
+            public:
+                Cartridge();
+                ~Cartridge();
 
-        private:
-    };
+            private:
+        };
+    }
 }
 
 #endif // _CARTRIDGE_HPP_
