@@ -1,0 +1,7 @@
+.cache/
+compile_commands
+
+logs/
+obj/
+gameboy-emu
+redirects/

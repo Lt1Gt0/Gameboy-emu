@@ -1,30 +1,14 @@
 #pragma once
-#ifndef _COMMON_H
-#define _COMMON_H
+#ifndef _COMMON_HPP_
+#define _COMMON_HPP_
 
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <iostream>
-#include "logger.h"
+#include "logger.hpp"
 #define OPT [[maybe_unused]]
-
-namespace C8
-{
-    typedef uint8_t     byte;
-    typedef uint16_t    word;
-
-    struct CallbackArgs {
-        [[maybe_unused]] word addr;
-        [[maybe_unused]] byte nibble;
-        [[maybe_unused]] byte x;
-        [[maybe_unused]] byte y;
-        [[maybe_unused]] byte kk;
-    };
-
-    typedef void (*InstructionCallback)([[maybe_unused]] CallbackArgs arg);
-}
 
 enum class Severity {
     low = 0,
@@ -34,7 +18,7 @@ enum class Severity {
 
 inline void error(Severity severity)
 {
-    LOG_ERROR << "Exiting with severity: " << (int)severity << std::endl;
+    logger.Log(ERROR, "Exiting with severity: %d", (int)severity);
     std::cerr << '\n';
     std::exit((int)severity);
 }
@@ -69,4 +53,4 @@ namespace Debug
     }
 }
 
-#endif // _COMMON_H
+#endif // _COMMON_HPP_

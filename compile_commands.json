@@ -1,0 +1,18 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Isrc/headers",
+      "-c",
+      "-o",
+      "obj/gameboy.o",
+      "src/gameboy.cpp"
+    ],
+    "directory": "/home/simonk/Documents/github/Gameboy-emu",
+    "file": "/home/simonk/Documents/github/Gameboy-emu/src/gameboy.cpp",
+    "output": "/home/simonk/Documents/github/Gameboy-emu/obj/gameboy.o"
+  }
+]
