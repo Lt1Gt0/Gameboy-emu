@@ -1,9 +1,11 @@
 #pragma once
-#ifndef _GAMEBOY_HPP_
-#define _GAMEBOY_HPP_
+#ifndef _GAMEBOY_DEFINITIONS_HPP_
+#define _GAMEBOY_DEFINITIONS_HPP_
 
-namespace GameBoy
+namespace GameBoy 
 {
+    constexpr int MEM_MAP_SIZE {0xFFFF};
+
     enum MEM_MAP_OFFSET {
         RomBank0_16k = 0x000,
         RomSwitchable_16k = 0x4000,
@@ -18,16 +20,6 @@ namespace GameBoy
         HRam = 0xFF80,
         InterruptEnableReg = 0xFFFF
     };
-
-    class GameBoy
-    {
-        public:
-            GameBoy();
-            ~GameBoy();
-
-        private:
-
-    };
 }
 
-#endif // _GAMEBOY_HPP_
+#endif // _GAMEBOY_DEFINITIONS_HPP_

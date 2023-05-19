@@ -8,7 +8,6 @@ namespace GameBoy
 {
     namespace CPU
     {
-
         struct Instruction {
             word opcode;
             byte cycles;

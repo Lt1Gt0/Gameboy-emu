@@ -2,6 +2,8 @@
 #ifndef _GAMEBOY_CPU_HPP_
 #define _GAMEBOY_CPU_HPP_
 
+#include "cpu/registers.hpp"
+
 namespace GameBoy
 {
     namespace CPU
@@ -11,6 +13,8 @@ namespace GameBoy
             public:
                 CPU();
                 ~CPU();
+
+            Registers mRegs;
 
             private:
 

@@ -4,8 +4,11 @@
 
 namespace GameBoy
 {
-    void Flags::ParseAF(word AF) 
+    namespace CPU
     {
-        logger.Log(UNIMPLEMENTED, "TODO");
+        void Flags::ParseAF(word AF) 
+        {
+            logger.Log(UNIMPLEMENTED, "TODO");
+        }
     }
 }
