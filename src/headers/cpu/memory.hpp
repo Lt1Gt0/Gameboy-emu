@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _GAMEBOY_CPU_MEMORY_H
-#define _GAMEBOY_CPU_MEMORY_H
+#ifndef _GAMEBOY_CPU_MEMORY_HPP_
+#define _GAMEBOY_CPU_MEMORY_HPP_
 
 #include "gameboy/memory.hpp"
 #include "utils/types.hpp"
@@ -17,4 +17,4 @@ namespace GameBoy
     }
 }
 
-#endif // _GAMEBOY_CPU_MEMORY_H
+#endif // _GAMEBOY_CPU_MEMORY_HPP_
