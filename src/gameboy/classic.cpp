@@ -1,33 +1,39 @@
-#include "gameboy/gameboy.hpp"
+#include "gameboy/classic.hpp"
 #include "utils/logger.hpp"
 
+#include <assert.h>
 #include <algorithm>
 
 namespace GameBoy
 {
-    GameBoy::GameBoy()
+    Classic::Classic()
     {
         InitMemMap();
     }
 
-    GameBoy::~GameBoy()
+    Classic::~Classic()
     {
 
     }
 
-    void GameBoy::Start()
+    void LoadCartridge(Cartridge::Cartridge* const cartridge)
+    {
+        assert(cartridge == nullptr);
+    }
+
+    void Classic::Start()
     {
         // Gameboy specs state on start the PC is set to 0x100
         mCPU.mRegs.PC = 0x100;
     }
 
-    void GameBoy::InitMemMap()
+    void Classic::InitMemMap()
     {
         mMemory.mMap.fill(0);
     }
 
     // TODO: Optimize later
-    void GameBoy::DumpMemMap(int offset, int amount)
+    void Classic::DumpMemMap(int offset, int amount)
     {
         if (amount + offset > MEM_MAP_SIZE) {
             logger.Log(ERROR, "Unable to dump %d bytes starting from offset %d", amount, offset);

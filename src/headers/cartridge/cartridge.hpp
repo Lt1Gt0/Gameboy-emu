@@ -9,7 +9,9 @@ namespace GameBoy
 {
     namespace Cartridge
     {
-        constexpr byte HEADER[48] = {
+        // Scrolling Nintendo Graphic
+        // location at address 0x68 -> 0x85 (0104 -> 0133)
+        constexpr byte NINTENDO_GRAPHIC[48] = {
             0xCE, 0xED, 0x66, 0x66, 0xCC, 0x0D,
             0x00, 0x0B, 0x03, 0x73, 0x00, 0x83,
             0x00, 0x0C, 0x00, 0x0D, 0x00, 0x08,

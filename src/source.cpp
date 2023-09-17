@@ -1,12 +1,16 @@
 #include "utils/logger.hpp"
-#include "gameboy/gameboy.hpp"
+#include "gameboy/classic.hpp"
 
 Logger logger;
+using namespace GameBoy;
 int main(int argc, char** argv) 
 {
     logger = Logger("logs/", "info");
     
-    GameBoy::GameBoy gameboy;
+    Classic gbc;
+    Cartridge::Cartridge cartridge = Cartridge::Cartridge();
+
+    gbc.LoadCartridge(&cartridge);
 
     // gameboy.Start();
 }
