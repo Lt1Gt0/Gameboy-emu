@@ -10,6 +10,7 @@ int main(int argc, char** argv)
     Classic gbc;
     Cartridge::Cartridge cartridge = Cartridge::Cartridge();
 
+
     gbc.LoadCartridge(&cartridge);
 
     // gameboy.Start();
