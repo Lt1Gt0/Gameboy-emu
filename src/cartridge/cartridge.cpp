@@ -2,5 +2,16 @@
 
 namespace GameBoy
 {
+    namespace Cartridge
+    {
+        Cartridge::Cartridge()
+        {
 
+        }
+
+        Cartridge::~Cartridge()
+        {
+
+        }
+    }
 }
