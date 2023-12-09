@@ -1,1 +1,9 @@
+http://www.codeslinger.co.uk/pages/projects/gameboy/files/GB.pdf
 
+http://www.codeslinger.co.uk/pages/projects/gameboy.html
+
+https://github.com/c-sp/gameboy-test-roms
+
+https://gbdev.io/pandocs/
+
+https://gekkio.fi/files/gb-docs/gbctr.pdf

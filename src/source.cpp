@@ -7,9 +7,11 @@ int main(int argc, char** argv)
 {
     logger = Logger("logs/", "info");
     
-    Classic gbc = Classic();
+    Classic gb = Classic();
+
+    // Work on cartridges after I have something working with the gameboy system
     Cartridge::Cartridge cartridge = Cartridge::Cartridge();
 
-    gbc.LoadCartridge(&cartridge);
-    gbc.Start();
+    gb.LoadCartridge(&cartridge);
+    gb.Start();
 }
