@@ -11,7 +11,6 @@ namespace GameBoy
         struct Instruction {
             word opcode;
             byte cycles;
-
         };
     }
 }
