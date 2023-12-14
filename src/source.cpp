@@ -1,5 +1,6 @@
 #include "utils/logger.hpp"
 #include "gameboy/classic.hpp"
+#include "gameboy/display.hpp"
 
 Logger logger;
 using namespace GameBoy;
@@ -14,4 +15,7 @@ int main(int argc, char** argv)
 
     gb.LoadCartridge(&cartridge);
     gb.Start();
+
+    // For now the display is seperate from the gb
+    Display display = Display();
 }

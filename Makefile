@@ -8,6 +8,7 @@ REDIRECT_DIR = redirects
 #Compiler and linker things
 CC = g++
 CCFLAGS = -g -Wall -Wextra --std=c++20
+SDL = `sdl2-config --cflags --libs`
 LD = ld
 LDFLAGS = 
 
@@ -27,7 +28,7 @@ all: $(OBJ)
 $(OBJ): $(OBJS)
 	@echo ---- Linking $^ ----
 	@mkdir -p $(@D)
-	$(CC) $^ -o $@
+	$(CC) $^ -o $@ $(SDL)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo ---- Compiling $^ ----

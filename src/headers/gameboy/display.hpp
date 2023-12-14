@@ -1,14 +1,18 @@
 #pragma once
-#ifndef GB_DISPLAY_HPP
-#define GB_DISPLAY_HPP
+#ifndef _GB_DISPLAY_HPP_
+#define _GB_DISPLAY_HPP_
 
 namespace GameBoy
 {
     class Display
     {
-        Display();
-        ~Display();
+        public:
+            Display();
+            ~Display();
+
+        private:
+            int InitDisplay();
     };
 }
 
-#endif // GB_DISPLAY_HPP
+#endif // _GB_DISPLAY_HPP_
