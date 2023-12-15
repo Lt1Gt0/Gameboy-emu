@@ -18,7 +18,7 @@ namespace GameBoy
 
     void Classic::LoadCartridge(Cartridge::Cartridge* const cartridge)
     {
-        assert(cartridge == nullptr);
+        assert(cartridge != nullptr);
     }
 
     void Classic::Start()
