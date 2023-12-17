@@ -16,6 +16,7 @@ enum class Severity {
     high
 };
 
+
 inline void error(Severity severity)
 {
     logger.Log(ERROR, "Exiting with severity: %d", (int)severity);

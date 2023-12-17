@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 
     // Work on cartridges after I have something working with the gameboy system
     Cartridge::Cartridge cartridge = Cartridge::Cartridge();
-    cartridge.LoadContents("roms/poweron.gb");
+    cartridge.LoadContents("roms/cpu_instrs/cpu_instrs.gb");
 
     gb.LoadCartridge(&cartridge);
     gb.Start();
