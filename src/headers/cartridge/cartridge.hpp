@@ -4,6 +4,7 @@
 
 #include "utils/types.hpp"
 #include <array>
+#include <string_view>
 
 namespace GameBoy
 {
@@ -27,6 +28,8 @@ namespace GameBoy
             public:
                 Cartridge();
                 ~Cartridge();
+
+                int LoadContents(std::string_view path);
 
             private:
         };
