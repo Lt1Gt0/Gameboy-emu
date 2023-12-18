@@ -9,10 +9,7 @@ int main(int argc, char** argv)
     logger = Logger("logs/", "info");
     
     Classic gb = Classic();
-
-    // Work on cartridges after I have something working with the gameboy system
-    Cartridge::Cartridge cartridge = Cartridge::Cartridge();
-    cartridge.LoadContents("roms/cpu_instrs/cpu_instrs.gb");
+    Cartridge::Cartridge cartridge = Cartridge::Cartridge("roms/cpu_instrs/cpu_instrs.gb");
 
     gb.LoadCartridge(&cartridge);
     gb.Start();

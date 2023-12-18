@@ -1,27 +1,33 @@
 #include "cartridge/cartridge.hpp"
+
+#include <iomanip>
+#include "utils/types.hpp"
 #include "utils/common.hpp"
 #include <fstream>
 #include <iostream>
+#include <stdlib.h>
+#include <string.h>
 
 namespace GameBoy
 {
     namespace Cartridge
     {
-        std::string ToHex(const string& s, bool upper_case)
+        // std::string ToHex(const string& s, bool upper_case)
+        // {
+        //     std::ostringstream ret;
+        //
+        //     for (std::string::size_type i = 0; i < s.length(); ++i) {
+        //         int z = s[i] & 0xFF;
+        //         ret << std::hex << std::setfill('0') << std::setw(2) << (upper_case ? std::uppercase : std::nouppercase) << z;
+        //     }
+        //
+        //     return ret.str();
+        // }
+
+        Cartridge::Cartridge(std::string_view path)
         {
-            std::ostringstream ret;
-
-            for (std::string::size_type i = 0; i < s.length(); ++i) {
-                int z = s[i] & 0xFF;
-                ret << std::hex << std::setfill('0') << std::setw(2) << (upper_case ? std::uppercase : std::nouppercase) << z;
-            }
-
-            return ret.str();
-        }
-
-        Cartridge::Cartridge()
-        {
-
+            mContents = new byte[CARTIDGE_MAX_SIZE];
+            LoadContents(path);
         }
 
         Cartridge::~Cartridge()
@@ -31,36 +37,34 @@ namespace GameBoy
 
         int Cartridge::LoadContents(std::string_view path)
         {
-            std::ifstream file;
-            file.open(path.data(), std::ios::in | std::ios::binary | std::ios::ate);
+            // Reset the current contents of the loaded data
+            memset(mContents, 0, CARTIDGE_MAX_SIZE);
 
-            if (file.is_open()) {
-                file.seekg(0, std::ios::beg);
-                auto readSize = std::size_t(1);
-                auto out = std::string();
-                auto buf = std::string(readSize, '\0');
+            FILE* fp = fopen(path.data(), "rb");
+            fread(mContents, 1, CARTIDGE_MAX_SIZE, fp);
+            fclose(fp);
 
-                while (file.read(&buf[0], readSize)) {
-                    out.append(buf, 0, file.gcount());
-                }
+            logger.Log(SUCCESS, "Loaded content of ROM into cartidge contents");
+            return 0;
+        }
 
-                file.close();
-                // std::cout << out << std::endl;
-                std::string hexBuf = ToHex(out, true);
+        void Cartridge::DumpContents()
+        {
+            for (size_t i = 0; i < CARTIDGE_MAX_SIZE ; i++) {
+                if (i % 2 == 0)
+                    std::cout << " ";
 
-                for (size_t i = 0; i < hexBuf.size(); i++) {
-                    if (i % 4 == 0) {
-                        std::cout << " ";
-                    }
-                    if (i % 16 == 0) {
-                        std::cout << "\n";
-                    }
+                if (i % 4 == 0)
+                    std::cout << "\n";
 
-                    std::cout << hexBuf[i];
-                }
+                int z = mContents[i] & 0xFF;
+                // std::cout << std::hex << std::setfill('0') << std::setw(2) << std::uppercase << z;
+                std::cout << std::hex << std::setw(1) << std::uppercase << z;
+                // exit(1);
+                // std::cout << std::hex << std::setw(2) << std::uppercase << z;
             }
 
-            return 0;
+            std::cout << std::endl;
         }
     }
 }

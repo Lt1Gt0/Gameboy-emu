@@ -4,7 +4,9 @@
 
 #include <stdint.h>
 
-typedef uint8_t     byte;
-typedef uint16_t    word;
+typedef unsigned char   byte;
+typedef char            signed_byte;
+typedef unsigned short  word;
+typedef signed short    signed_word;
 
 #endif // _TYPES_HPP_

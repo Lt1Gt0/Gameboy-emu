@@ -9,6 +9,7 @@ namespace GameBoy
     Classic::Classic()
     {
         InitMemMap();
+        mCartidge = nullptr;
     }
 
     Classic::~Classic()
@@ -19,10 +20,15 @@ namespace GameBoy
     void Classic::LoadCartridge(Cartridge::Cartridge* const cartridge)
     {
         assert(cartridge != nullptr);
+
+        mCartidge = cartridge;
+        logger.Log(INFO, "Loaded cartidge into gameboy");
     }
 
     void Classic::Start()
     {
+        assert(mCartidge != nullptr);
+
         // Gameboy specs state on start the PC is set to 0x100
         mCPU.mRegs.PC = 0x100;
     }

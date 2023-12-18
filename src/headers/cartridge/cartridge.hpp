@@ -23,15 +23,21 @@ namespace GameBoy
             0x99, 0x9F, 0xBB, 0xB9, 0x33, 0x3E
         };
 
+        constexpr size_t CARTIDGE_MAX_SIZE {0x200000};
+
         class Cartridge
         {
             public:
-                Cartridge();
+                Cartridge(std::string_view path);
                 ~Cartridge();
 
                 int LoadContents(std::string_view path);
 
+                // DEBUG FUNCTIONS
+                void DumpContents();
+
             private:
+                byte* mContents;
         };
     }
 }

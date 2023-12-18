@@ -24,6 +24,7 @@ namespace GameBoy
             void InitMemMap();
 
             CPU::CPU mCPU;
+            Cartridge::Cartridge* mCartidge;
     };
 }
 
