@@ -1,4 +1,5 @@
 #include "cpu/instructions.hpp"
+#include <map>
 
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
@@ -6,7 +7,7 @@ namespace GameBoy
 {
     namespace CPU
     {
-        int byte_ld(CPU* state, UNUSED word basePC, byte opcode)
+        int op_byte_ld(CPU* state, UNUSED word basePC, byte opcode)
         {
             switch (opcode) {
                 case 0x06:
@@ -282,19 +283,33 @@ namespace GameBoy
             return 0;
         }
 
-        int word_ld(CPU* state, UNUSED word basePC, byte opcode)
+        int op_word_ld(CPU* state, UNUSED word basePC, byte opcode)
         {
             return 0;
         }
 
-        int byte_alu(CPU* state, UNUSED word basePC, byte opcode)
+        int op_byte_alu(CPU* state, UNUSED word basePC, byte opcode)
         {
             return 0;
         }
 
-        int word_alu(CPU* state, UNUSED word basePC, byte opcode)
+        int op_word_alu(CPU* state, UNUSED word basePC, byte opcode)
         {
             return 0;
+        }
+
+        int op_misc(CPU* state, UNUSED word basePC, byte opcode)
+        {
+
+        }
+
+        std::map<byte, Instruction> GetInstructionMap()
+        {
+            std::map<byte, Instruction> instructionMap {
+                {0x0, {op_misc, 4}}
+            };
+
+            return instructionMap;
         }
     }
 }
