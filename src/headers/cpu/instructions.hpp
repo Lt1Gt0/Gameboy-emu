@@ -15,6 +15,7 @@ namespace GameBoy
         typedef int (*OP)(CPU* state, UNUSED word basePC, byte opcode);
         struct Instruction {
             OP   targetFunc;
+            byte size;
             byte clockCycles;
         };
 
@@ -23,6 +24,7 @@ namespace GameBoy
         int op_word_ld(CPU* state, UNUSED word basePC, byte opcode);
         int op_byte_alu(CPU* state, UNUSED word basePC, byte opcode);
         int op_word_alu(CPU* state, UNUSED word basePC, byte opcode);
+        int op_jmp(CPU* state, UNUSED word basePC, byte opcode);
         int op_misc(CPU* state, UNUSED word basePC, byte opcode);
 
         // srb -> shift/rotate/bit ops
