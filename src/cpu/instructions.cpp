@@ -1,4 +1,6 @@
 #include "cpu/instructions.hpp"
+#include "utils/common.hpp"
+#include "utils/logger.hpp"
 #include <map>
 
 #pragma GCC diagnostic ignored "-Wunused-parameter"
@@ -278,6 +280,10 @@ namespace GameBoy
                 {
                     break;
                 }
+                default:
+                {
+                    logger.Log(ERROR, "Unknown misc operation");
+                }
             }
 
             return 0;
@@ -285,36 +291,65 @@ namespace GameBoy
 
         int op_word_ld(CPU* state, UNUSED word basePC, byte opcode)
         {
+            switch(opcode) {
+                default:
+                {
+                    logger.Log(ERROR, "Unknown misc operation");
+                }
+            }
+
             return 0;
         }
 
         int op_byte_alu(CPU* state, UNUSED word basePC, byte opcode)
         {
+            switch(opcode) {
+                default:
+                {
+                    logger.Log(ERROR, "Unknown misc operation");
+                }
+            }
+
             return 0;
         }
 
         int op_word_alu(CPU* state, UNUSED word basePC, byte opcode)
         {
+            switch(opcode) {
+                default:
+                {
+                    logger.Log(ERROR, "Unknown misc operation");
+                }
+            }
+
             return 0;
         }
 
         int op_jmp(CPU* state, UNUSED word basePC, byte opcode)
         {
+            switch(opcode) {
+                default:
+                {
+                    logger.Log(ERROR, "Unknown misc operation");
+                }
+            }
+
             return 0;
         }
 
         int op_misc(CPU* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
-                case 0x00:
+                case 0x00: // NOP
                 {
 
                 }
                 default:
                 {
-
+                    logger.Log(ERROR, "Unknown misc operation");
                 }
             }
+
             return 0;
         }
 

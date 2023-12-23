@@ -60,8 +60,6 @@ namespace GameBoy
                 int z = mContents[i] & 0xFF;
                 // std::cout << std::hex << std::setfill('0') << std::setw(2) << std::uppercase << z;
                 std::cout << std::hex << std::setw(1) << std::uppercase << z;
-                // exit(1);
-                // std::cout << std::hex << std::setw(2) << std::uppercase << z;
             }
 
             std::cout << std::endl;
