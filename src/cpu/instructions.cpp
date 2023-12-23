@@ -1,7 +1,15 @@
 #include "cpu/instructions.hpp"
+#include "gameboy/memory.hpp"
 #include "utils/common.hpp"
 #include "utils/logger.hpp"
 #include <map>
+
+// Z -> Zero flag
+// N -> Subtract flag
+// H -> Carry flag
+// 0 -> Flag is reset
+// 1 -> Flag is set
+// - -> Flag is left untouched 
 
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
@@ -12,7 +20,15 @@ namespace GameBoy
         int op_byte_ld(CPU* state, UNUSED word basePC, byte opcode)
         {
             switch (opcode) {
+                case 0x02:
+                {
+                    break;
+                }
                 case 0x06:
+                {
+                    break;
+                }
+                case 0x0A:
                 {
                     break;
                 }
@@ -20,7 +36,15 @@ namespace GameBoy
                 {
                     break;
                 }
+                case 0x12:
+                {
+                    break;
+                }
                 case 0x16:
+                {
+                    break;
+                }
+                case 0x1A:
                 {
                     break;
                 }
@@ -28,7 +52,15 @@ namespace GameBoy
                 {
                     break;
                 }
+                case 0x22:
+                {
+                    break;
+                }
                 case 0x26:
+                {
+                    break;
+                }
+                case 0x2A:
                 {
                     break;
                 }
@@ -36,35 +68,19 @@ namespace GameBoy
                 {
                     break;
                 }
-                case 0x7F:
+                case 0x32:
                 {
                     break;
                 }
-                case 0x78:
+                case 0x36:
                 {
                     break;
                 }
-                case 0x79:
+                case 0x3A:
                 {
                     break;
                 }
-                case 0x7A:
-                {
-                    break;
-                }
-                case 0x7B:
-                {
-                    break;
-                }
-                case 0x7C:
-                {
-                    break;
-                }
-                case 0x7D:
-                {
-                    break;
-                }
-                case 0x7E:
+                case 0x3E:
                 {
                     break;
                 }
@@ -276,7 +292,35 @@ namespace GameBoy
                 {
                     break;
                 }
-                case 0x36:
+                case 0x78:
+                {
+                    break;
+                }
+                case 0x79:
+                {
+                    break;
+                }
+                case 0x7A:
+                {
+                    break;
+                }
+                case 0x7B:
+                {
+                    break;
+                }
+                case 0x7C:
+                {
+                    break;
+                }
+                case 0x7D:
+                {
+                    break;
+                }
+                case 0x7E:
+                {
+                    break;
+                }
+                case 0x7F:
                 {
                     break;
                 }
@@ -292,6 +336,66 @@ namespace GameBoy
         int op_word_ld(CPU* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
+                case 0x01:
+                {
+                    break;
+                }
+                case 0x08:
+                {
+                    break;
+                }
+                case 0x11:
+                {
+                    break;
+                }
+                case 0x21:
+                {
+                    break;
+                }
+                case 0x31:
+                {
+                    break;
+                }
+                case 0xC1:
+                {
+                    break;
+                }
+                case 0xC5:
+                {
+                    break;
+                }
+                case 0xD1:
+                {
+                    break;
+                }
+                case 0xD5:
+                {
+                    break;
+                }
+                case 0xE1:
+                {
+                    break;
+                }
+                case 0xE5:
+                {
+                    break;
+                }
+                case 0xF1:
+                {
+                    break;
+                }
+                case 0xF5:
+                {
+                    break;
+                }
+                case 0xF8:
+                {
+                    break;
+                }
+                case 0xF9:
+                {
+                    break;
+                }
                 default:
                 {
                     logger.Log(ERROR, "Unknown misc operation");
@@ -304,6 +408,374 @@ namespace GameBoy
         int op_byte_alu(CPU* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
+                case 0x04: // Z 0 H -
+                {
+                    break;
+                }
+                case 0x05: // Z 1 H -
+                {
+                    break;
+                }
+                case 0x0C: // Z 0 H -
+                {
+                    break;
+                }
+                case 0x0D: // Z 1 H -
+                {
+                    break;
+                }
+                case 0x14: // Z 0 H -
+                {
+                    break;
+                }
+                case 0x15: // Z 1 H -
+                {
+                    break;
+                }
+                case 0x1C: // Z 0 H -
+                {
+                    break;
+                }
+                case 0x1D: // Z 1 H -
+                {
+                    break;
+                }
+                case 0x24: // Z 0 H -
+                {
+                    break;
+                }
+                case 0x25: // Z 1 H -
+                {
+                    break;
+                }
+                case 0x27: // Z - 0 C
+                {
+                    break;
+                }
+                case 0x2C: // Z 0 H -
+                {
+                    break;
+                }
+                case 0x2D: // Z 1 H -
+                {
+                    break;
+                }
+                case 0x2F: // - 1 1 -
+                {
+                    break;
+                }
+                case 0x34: // Z 0 H -
+                {
+                    break;
+                }
+                case 0x35: // Z 1 H -
+                {
+                    break;
+                }
+                case 0x37: // - 0 0 1
+                {
+                    break;
+                }
+                case 0x3C: // Z 0 H -
+                {
+                    break;
+                }
+                case 0x3D: // Z 1 H -
+                {
+                    break;
+                }
+                case 0x3F: // - 0 0 C
+                {
+                    break;
+                }
+                case 0x80: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x81: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x82: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x83: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x84: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x85: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x86: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x87: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x88: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x89: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x8A: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x8B: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x8C: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x8D: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x8E: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x8F: // Z 0 H C
+                {
+                    break;
+                }
+                case 0x90: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x91: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x92: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x93: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x94: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x95: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x96: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x97: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x98: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x99: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x9A: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x9B: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x9C: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x9D: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x9E: // Z 1 H C
+                {
+                    break;
+                }
+                case 0x9F: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xA0: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xA1: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xA2: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xA3: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xA4: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xA5: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xA6: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xA7: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xA8: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xA9: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xAA: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xAB: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xAC: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xAD: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xAE: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xAF: // 1 0 0 0
+                {
+                    break;
+                }
+                case 0xB0: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xB1: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xB2: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xB3: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xB4: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xB5: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xB6: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xB7: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xB8: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xB9: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xBA: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xBB: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xBC: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xBD: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xBE: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xBF: // 1 1 0 0
+                {
+                    break;
+                }
+                case 0xC6: // Z 0 H C
+                {
+                    break;
+                }
+                case 0xCE: // Z 0 H C
+                {
+                    break;
+                }
+                case 0xD6: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xDE: // Z 1 H C
+                {
+                    break;
+                }
+                case 0xE6: // Z 0 1 0
+                {
+                    break;
+                }
+                case 0xEE: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xF6: // Z 0 0 0
+                {
+                    break;
+                }
+                case 0xFE: // Z 1 H C
+                {
+                    break;
+                }
                 default:
                 {
                     logger.Log(ERROR, "Unknown misc operation");
@@ -316,6 +788,58 @@ namespace GameBoy
         int op_word_alu(CPU* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
+                case 0x03:
+                {
+                    break;
+                }
+                case 0x09:
+                {
+                    break;
+                }
+                case 0x0B:
+                {
+                    break;
+                }
+                case 0x13:
+                {
+                    break;
+                }
+                case 0x19:
+                {
+                    break;
+                }
+                case 0x1B:
+                {
+                    break;
+                }
+                case 0x23:
+                {
+                    break;
+                }
+                case 0x29:
+                {
+                    break;
+                }
+                case 0x2B:
+                {
+                    break;
+                }
+                case 0x33:
+                {
+                    break;
+                }
+                case 0x39:
+                {
+                    break;
+                }
+                case 0x3B:
+                {
+                    break;
+                }
+                case 0xE8:
+                {
+                    break;
+                }
                 default:
                 {
                     logger.Log(ERROR, "Unknown misc operation");
@@ -328,6 +852,146 @@ namespace GameBoy
         int op_jmp(CPU* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
+                case 0x18:
+                {
+
+                }
+                case 0x20:
+                {
+
+                }
+                case 0x28:
+                {
+
+                }
+                case 0x30:
+                {
+
+                }
+                case 0x38:
+                {
+
+                }
+                case 0xC0:
+                {
+
+                }
+                case 0xC2:
+                {
+
+                }
+                case 0xC3:
+                {
+
+                }
+                case 0xC4:
+                {
+
+                }
+                case 0xC7:
+                {
+
+                }
+                case 0xC8:
+                {
+
+                }
+                case 0xC9:
+                {
+
+                }
+                case 0xCA:
+                {
+
+                }
+                case 0xCC:
+                {
+
+                }
+                case 0xCD:
+                {
+
+                }
+                case 0xCF:
+                {
+
+                }
+                case 0xD0:
+                {
+
+                }
+                case 0xD1:
+                {
+
+                }
+                case 0xD2:
+                {
+
+                }
+                case 0xD3:
+                {
+
+                }
+                case 0xD7:
+                {
+
+                }
+                case 0xD8:
+                {
+
+                }
+                case 0xD9:
+                {
+
+                }
+                case 0xDA:
+                {
+
+                }
+                case 0xDC:
+                {
+
+                }
+                case 0xDD:
+                {
+
+                }
+                case 0xDF:
+                {
+
+                }
+                case 0xE7:
+                {
+
+                }
+                case 0xE8:
+                {
+
+                }
+                case 0xE9:
+                {
+
+                }
+                case 0xEA:
+                {
+
+                }
+                case 0xEC:
+                {
+
+                }
+                case 0xEF:
+                {
+
+                }
+                case 0xF7:
+                {
+
+                }
+                case 0xFF:
+                {
+
+                }
                 default:
                 {
                     logger.Log(ERROR, "Unknown misc operation");
@@ -344,6 +1008,54 @@ namespace GameBoy
                 {
 
                 }
+                case 0x10: // STOP
+                {
+
+                }
+                case 0x76: // HALT
+                {
+
+                }
+                case 0xCB: // PREFIX
+                {
+
+                }
+                case 0xF3: // DI
+                {
+
+                }
+                case 0xFB: // EI
+                {
+
+                }
+                default:
+                {
+                    logger.Log(ERROR, "Unknown misc operation");
+                }
+            }
+
+            return 0;
+        }
+
+        int op_byte_srb(CPU* state, UNUSED word basePC, byte opcode)
+        {
+            switch(opcode) {
+                case 0x07: // 0 0 0 C
+                {
+                    break;
+                }
+                case 0x0F: // 0 0 0 C
+                {
+                    break;
+                }
+                case 0x17: // 0 0 0 C
+                {
+                    break;
+                }
+                case 0x1F: // 0 0 0 C
+                {
+                    break;
+                }
                 default:
                 {
                     logger.Log(ERROR, "Unknown misc operation");
@@ -356,22 +1068,22 @@ namespace GameBoy
         std::map<byte, Instruction> GetInstructionMap()
         {
             std::map<byte, Instruction> instructionMap {
-                {0x0, {op_misc, 1, 4}},
-                {0x1, {op_word_ld, 3, 12}},
-                {0x2, {op_byte_ld, 1, 8}},
-                {0x3, {op_word_alu, 1, 8}},
-                {0x4, {op_byte_alu, 1, 4}},
-                {0x5, {op_byte_alu, 1, 4}},
-                {0x6, {op_byte_ld, 2, 8}},
-                {0x7, {op_byte_srb, 1, 4}},
-                {0x8, {op_word_ld, 3, 20}},
-                {0x9, {op_word_alu, 1, 8}},
-                {0xA, {op_byte_ld, 1, 8}},
-                {0xB, {op_word_alu, 1, 8}},
-                {0xC, {op_byte_alu, 1, 4}},
-                {0xD, {op_byte_alu, 1, 4}},
-                {0xE, {op_byte_ld, 2, 8}},
-                {0xF, {op_byte_srb, 1, 4}},
+                {0x00, {op_misc, 1, 4}},
+                {0x01, {op_word_ld, 3, 12}},
+                {0x02, {op_byte_ld, 1, 8}},
+                {0x03, {op_word_alu, 1, 8}},
+                {0x04, {op_byte_alu, 1, 4}},
+                {0x05, {op_byte_alu, 1, 4}},
+                {0x06, {op_byte_ld, 2, 8}},
+                {0x07, {op_byte_srb, 1, 4}},
+                {0x08, {op_word_ld, 3, 20}},
+                {0x09, {op_word_alu, 1, 8}},
+                {0x0A, {op_byte_ld, 1, 8}},
+                {0x0B, {op_word_alu, 1, 8}},
+                {0x0C, {op_byte_alu, 1, 4}},
+                {0x0D, {op_byte_alu, 1, 4}},
+                {0x0E, {op_byte_ld, 2, 8}},
+                {0x0F, {op_byte_srb, 1, 4}},
                 {0x10, {op_misc, 2, 4}},
                 {0x11, {op_word_ld, 3, 12}},
                 {0x12, {op_byte_ld, 1, 8}},
