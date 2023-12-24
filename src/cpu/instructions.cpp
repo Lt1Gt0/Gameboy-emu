@@ -22,6 +22,7 @@ namespace GameBoy
             switch (opcode) {
                 case 0x02:
                 {
+
                     break;
                 }
                 case 0x06:
@@ -854,143 +855,143 @@ namespace GameBoy
             switch(opcode) {
                 case 0x18:
                 {
-
+                    break;
                 }
                 case 0x20:
                 {
-
+                    break;
                 }
                 case 0x28:
                 {
-
+                    break;
                 }
                 case 0x30:
                 {
-
+                    break;
                 }
                 case 0x38:
                 {
-
+                    break;
                 }
                 case 0xC0:
                 {
-
+                    break;
                 }
                 case 0xC2:
                 {
-
+                    break;
                 }
                 case 0xC3:
                 {
-
+                    break;
                 }
                 case 0xC4:
                 {
-
+                    break;
                 }
                 case 0xC7:
                 {
-
+                    break;
                 }
                 case 0xC8:
                 {
-
+                    break;
                 }
                 case 0xC9:
                 {
-
+                    break;
                 }
                 case 0xCA:
                 {
-
+                    break;
                 }
                 case 0xCC:
                 {
-
+                    break;
                 }
                 case 0xCD:
                 {
-
+                    break;
                 }
                 case 0xCF:
                 {
-
+                    break;
                 }
                 case 0xD0:
                 {
-
+                    break;
                 }
                 case 0xD1:
                 {
-
+                    break;
                 }
                 case 0xD2:
                 {
-
+                    break;
                 }
                 case 0xD3:
                 {
-
+                    break;
                 }
                 case 0xD7:
                 {
-
+                    break;
                 }
                 case 0xD8:
                 {
-
+                    break;
                 }
                 case 0xD9:
                 {
-
+                    break;
                 }
                 case 0xDA:
                 {
-
+                    break;
                 }
                 case 0xDC:
                 {
-
+                    break;
                 }
                 case 0xDD:
                 {
-
+                    break;
                 }
                 case 0xDF:
                 {
-
+                    break;
                 }
                 case 0xE7:
                 {
-
+                    break;
                 }
                 case 0xE8:
                 {
-
+                    break;
                 }
                 case 0xE9:
                 {
-
+                    break;
                 }
                 case 0xEA:
                 {
-
+                    break;
                 }
                 case 0xEC:
                 {
-
+                    break;
                 }
                 case 0xEF:
                 {
-
+                    break;
                 }
                 case 0xF7:
                 {
-
+                    break;
                 }
                 case 0xFF:
                 {
-
+                    break;
                 }
                 default:
                 {
@@ -1006,27 +1007,27 @@ namespace GameBoy
             switch(opcode) {
                 case 0x00: // NOP
                 {
-
+                    break;
                 }
                 case 0x10: // STOP
                 {
-
+                    break;
                 }
                 case 0x76: // HALT
                 {
-
+                    break;
                 }
                 case 0xCB: // PREFIX
                 {
-
+                    break;
                 }
                 case 0xF3: // DI
                 {
-
+                    break;
                 }
                 case 0xFB: // EI
                 {
-
+                    break;
                 }
                 default:
                 {
