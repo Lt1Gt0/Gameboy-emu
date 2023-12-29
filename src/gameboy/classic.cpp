@@ -31,6 +31,10 @@ namespace GameBoy
 
         // Gameboy specs state on start the PC is set to 0x100
         mCPU.mRegs.PC = 0x100;
+
+        while (true) {
+            mCPU.ExecuteInstruction();
+        }
     }
 
     void Classic::InitMemMap()

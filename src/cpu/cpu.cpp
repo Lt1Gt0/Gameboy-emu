@@ -13,5 +13,12 @@ namespace GameBoy
         {
 
         }
+
+        int CPU::ExecuteInstruction()
+        {
+    
+
+            return 0;
+        }
     }
 }

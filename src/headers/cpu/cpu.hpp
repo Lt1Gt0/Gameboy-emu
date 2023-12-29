@@ -15,9 +15,9 @@ namespace GameBoy
                 ~CPU();
 
                 Registers mRegs;
+                int ExecuteInstruction();
 
             private:
-
         };
     }
 }
