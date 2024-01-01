@@ -29,8 +29,11 @@ namespace GameBoy
     {
         assert(mCartidge != nullptr);
 
-        // Gameboy specs state on start the PC is set to 0x100
-        mCPU.mRegs.PC = 0x100;
+        // Start by overwriting part of the cartridge with the boot rom (possible dmg0)
+
+        // Set the new start state of the PC to 0x100
+        // (Not sure if this is true)
+        // mCPU.mRegs.PC = 0x100;
         
 
         while (true) {
