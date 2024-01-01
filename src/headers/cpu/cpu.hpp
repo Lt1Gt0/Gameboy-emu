@@ -18,6 +18,7 @@ namespace GameBoy
                 int ExecuteInstruction();
 
             private:
+                int InitBootROM();
         };
     }
 }

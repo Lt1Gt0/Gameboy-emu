@@ -17,6 +17,8 @@ namespace GameBoy
 
     byte MemReadByte(int offset, Memory* mem);
     word MemReadWord(int offset, Memory* mem);
+
+    // void
 }
 
 #endif // _GAMEBOY_MEMORY_HPP_
