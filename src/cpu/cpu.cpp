@@ -40,7 +40,7 @@ namespace GameBoy
             assert(cartridge != nullptr);
 
             // Create buffer for boot rom
-            size_t bootRomSize = 0xFF;
+            size_t bootRomSize = 0xFF + 1;
             byte* bootRomBuf = new byte[bootRomSize];
             memset(bootRomBuf, 0, bootRomSize);
 
@@ -51,7 +51,8 @@ namespace GameBoy
             logger.Log(INFO, "Loaded boot rom buffer");
 
             // Use boot rom data and overwrite the cartridge from 0x00 -> 0xFF with boot rom
-            memcpy(bootRomBuf, cartridge->mContents, bootRomSize);
+            // memcpy(bootRomBuf, cartridge->mContents, bootRomSize);
+            memcpy(cartridge->mContents, bootRomBuf, bootRomSize);
             cartridge->DumpContents();
 
             return 0;

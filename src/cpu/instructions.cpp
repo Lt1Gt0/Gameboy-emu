@@ -17,7 +17,7 @@ namespace GameBoy
 {
     namespace CPU
     {
-        int op_byte_ld(CPU* state, UNUSED word basePC, byte opcode)
+        int op_byte_ld(State* state, UNUSED word basePC, byte opcode)
         {
             switch (opcode) {
                 case 0x02:
@@ -334,7 +334,7 @@ namespace GameBoy
             return 0;
         }
 
-        int op_word_ld(CPU* state, UNUSED word basePC, byte opcode)
+        int op_word_ld(State* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
                 case 0x01:
@@ -355,6 +355,7 @@ namespace GameBoy
                 }
                 case 0x31:
                 {
+                    // state->mRegs.SP = MemReadWord()
                     break;
                 }
                 case 0xC1:
@@ -406,7 +407,7 @@ namespace GameBoy
             return 0;
         }
 
-        int op_byte_alu(CPU* state, UNUSED word basePC, byte opcode)
+        int op_byte_alu(State* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
                 case 0x04: // Z 0 H -
@@ -786,7 +787,7 @@ namespace GameBoy
             return 0;
         }
 
-        int op_word_alu(CPU* state, UNUSED word basePC, byte opcode)
+        int op_word_alu(State* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
                 case 0x03:
@@ -850,7 +851,7 @@ namespace GameBoy
             return 0;
         }
 
-        int op_jmp(CPU* state, UNUSED word basePC, byte opcode)
+        int op_jmp(State* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
                 case 0x18:
@@ -1002,7 +1003,7 @@ namespace GameBoy
             return 0;
         }
 
-        int op_misc(CPU* state, UNUSED word basePC, byte opcode)
+        int op_misc(State* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
                 case 0x00: // NOP
@@ -1038,7 +1039,7 @@ namespace GameBoy
             return 0;
         }
 
-        int op_byte_srb(CPU* state, UNUSED word basePC, byte opcode)
+        int op_byte_srb(State* state, UNUSED word basePC, byte opcode)
         {
             switch(opcode) {
                 case 0x07: // 0 0 0 C

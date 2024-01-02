@@ -10,7 +10,7 @@ int main(int argc, char** argv)
     
     Classic gb = Classic();
     Cartridge::Cartridge cartridge = Cartridge::Cartridge("roms/cpu_instrs/cpu_instrs.gb");
-
+    
     gb.LoadCartridge(&cartridge);
     gb.Start();
 

@@ -1,53 +1,32 @@
 #include "gameboy/memory.hpp"
-#include "gameboy/definitions.hpp"
-#include "utils/common.hpp"
+#include <stdint.h>
 
 namespace GameBoy
 {
-    void MemWriteByte(byte b, int offset, Memory* mem)
+    void* MemRef(Memory* mem, word offset)
     {
-        if (offset > GameBoy::MEM_MAP_SIZE)
-            error(Severity::high, "Mem Write:", "Attempting to write mem out of bounds");
-
-        mem->mMap[offset] = b;
+        return (void*)((uintptr_t)mem->base | offset);
     }
 
-    void MemWriteWord(word w, int offset, Memory* mem)
+    byte MemReadByte(Memory* mem, word offset)
     {
-        if (offset > GameBoy::MEM_MAP_SIZE)
-            error(Severity::high, "Mem Write:", "Attempting to write mem out of bounds");
-
-        mem->mMap[offset] = (w >> 8 & 0xF);
-        mem->mMap[offset + 1] = (w & 0x0F);
-
-        // If for some reason I was wrong about the order in which words
-        // should be written into RAM this will flip the order
-        
-        // mem->mMap[offset] = (w & 0x0F);
-        // mem->mMap[offset + 1] = (w >> 8 & 0xF);
+        return *(byte*)MemRef(mem, offset);
     }
 
-    byte MemReadByte(int offset, Memory* mem)
+    word MemReadWord(Memory* mem, word offset)
     {
-        if (offset > GameBoy::MEM_MAP_SIZE)
-            error(Severity::high, "Mem Read:", "Attempting to read mem out of bounds");
-
-        return mem->mMap[offset];
+        return *(word*)MemRef(mem, offset);
     }
-    
-    word MemReadWord(int offset, Memory* mem)
+
+    void MemWriteByte(Memory* mem, word offset, byte value)
     {
-        if (offset > GameBoy::MEM_MAP_SIZE)
-            error(Severity::high, "Mem Read:", "Attempting to read mem out of bounds");
+        byte* target = (byte*)MemRef(mem, offset);
+        *target = value;
+    }
 
-        word val = 0;
-
-        word upper = mem->mMap[offset];
-        upper <<= 8;
-
-        val |= upper;
-        val |= mem->mMap[offset + 1];
-
-        return val;
+    void MemWriteWord(Memory* mem, word offset, word value)
+    {
+        word* target = (word*)MemRef(mem, offset);
+        *target = value;
     }
 }

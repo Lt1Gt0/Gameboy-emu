@@ -24,4 +24,5 @@ namespace GameBoy
         };
     }
 }
+
 #endif // _GAMEBOY_CPU_HPP_

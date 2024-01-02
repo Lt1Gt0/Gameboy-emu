@@ -2,8 +2,7 @@
 #ifndef _GAMEBOY_CLASSIC_HPP_
 #define _GAMEBOY_CLASSIC_HPP_
 
-#include "cpu/cpu.hpp"
-#include "gameboy/memory.hpp"
+#include "gameboy/state.hpp"
 #include "cartridge/cartridge.hpp"
 
 namespace GameBoy
@@ -19,12 +18,10 @@ namespace GameBoy
             void Start();
             void DumpMemMap(int offset = MEM_MAP_OFFSET::RomBank0_16k, int amount = MEM_MAP_SIZE);
 
-            Memory mMemory;
+            State* mState;
+            Cartridge::Cartridge* mCartidge;
         private:
             void InitMemMap();
-
-            CPU::CPU mCPU;
-            Cartridge::Cartridge* mCartidge;
     };
 }
 
