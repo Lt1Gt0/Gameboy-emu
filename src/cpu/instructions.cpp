@@ -1,6 +1,6 @@
 #include "cpu/instructions.hpp"
-#include "gameboy/memory.hpp"
-#include "utils/common.hpp"
+// #include "gameboy/memory.hpp"
+#include "utils/logger.hpp"
 #include "utils/logger.hpp"
 #include <map>
 

@@ -1,7 +1,9 @@
 #include "cpu/cpu.hpp"
 #include <assert.h>
-#include "utils/common.hpp"
-#include "gameboy/memory.hpp"
+#include <string.h>
+#include "utils/logger.hpp"
+#include "utils/types.hpp"
+// #include "gameboy/memory.hpp"
 
 namespace GameBoy
 {
@@ -37,9 +39,20 @@ namespace GameBoy
         {
             assert(cartridge != nullptr);
 
+            // Create buffer for boot rom
+            size_t bootRomSize = 0xFF;
+            byte* bootRomBuf = new byte[bootRomSize];
+            memset(bootRomBuf, 0, bootRomSize);
+
             // Read Boot rom file into memory
+            FILE* fp = fopen(path, "rb");
+            fread(bootRomBuf, 1, bootRomSize, fp);
+            fclose(fp);
+            logger.Log(INFO, "Loaded boot rom buffer");
 
             // Use boot rom data and overwrite the cartridge from 0x00 -> 0xFF with boot rom
+            memcpy(bootRomBuf, cartridge->mContents, bootRomSize);
+            cartridge->DumpContents();
 
             return 0;
         }

@@ -2,8 +2,7 @@
 
 #include <iomanip>
 #include "utils/types.hpp"
-#include "utils/common.hpp"
-#include <fstream>
+#include "utils/logger.hpp"
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -12,18 +11,6 @@ namespace GameBoy
 {
     namespace Cartridge
     {
-        // std::string ToHex(const string& s, bool upper_case)
-        // {
-        //     std::ostringstream ret;
-        //
-        //     for (std::string::size_type i = 0; i < s.length(); ++i) {
-        //         int z = s[i] & 0xFF;
-        //         ret << std::hex << std::setfill('0') << std::setw(2) << (upper_case ? std::uppercase : std::nouppercase) << z;
-        //     }
-        //
-        //     return ret.str();
-        // }
-
         Cartridge::Cartridge(std::string_view path)
         {
             mContents = new byte[CARTIDGE_MAX_SIZE];
@@ -50,16 +37,14 @@ namespace GameBoy
 
         void Cartridge::DumpContents()
         {
-            for (size_t i = 0; i < CARTIDGE_MAX_SIZE ; i++) {
+            for (size_t i = 1; i <= CARTIDGE_MAX_SIZE ; i++) {
+                std::cout << std::hex << std::setfill('0') << std::setw(2) << std::uppercase << int(mContents[i-1]);
+
                 if (i % 2 == 0)
                     std::cout << " ";
 
-                if (i % 4 == 0)
+                if (i % 16 == 0)
                     std::cout << "\n";
-
-                int z = mContents[i] & 0xFF;
-                // std::cout << std::hex << std::setfill('0') << std::setw(2) << std::uppercase << z;
-                std::cout << std::hex << std::setw(1) << std::uppercase << z;
             }
 
             std::cout << std::endl;

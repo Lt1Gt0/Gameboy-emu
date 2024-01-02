@@ -3,7 +3,6 @@
 #define _CARTRIDGE_HPP_
 
 #include "utils/types.hpp"
-#include <array>
 #include <string_view>
 
 namespace GameBoy

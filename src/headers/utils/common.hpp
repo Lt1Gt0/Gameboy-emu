@@ -4,8 +4,6 @@
 
 #include <stdarg.h>
 #include <stdio.h>
-#include <stdint.h>
-#include <stdlib.h>
 #include <iostream>
 #include "logger.hpp"
 #define OPT [[maybe_unused]]
