@@ -3,6 +3,7 @@
 #define _GAMEBOY_CPU_HPP_
 
 #include "cpu/registers.hpp"
+#include "cartridge/cartridge.hpp"
 
 namespace GameBoy
 {
@@ -16,6 +17,7 @@ namespace GameBoy
 
                 Registers mRegs;
                 int ExecuteInstruction();
+                int BurnBootRom(Cartridge::Cartridge* cartridge, const char* path = "roms/boot/dmg.bin");
 
             private:
                 int InitBootROM();

@@ -30,12 +30,14 @@ namespace GameBoy
         assert(mCartidge != nullptr);
 
         // Start by overwriting part of the cartridge with the boot rom (possible dmg0)
+        this->mCPU.BurnBootRom(mCartidge);
+
 
         // Set the new start state of the PC to 0x100
         // (Not sure if this is true)
         // mCPU.mRegs.PC = 0x100;
-        
 
+        // Perform execution cycle
         while (true) {
             mCPU.ExecuteInstruction();
         }
