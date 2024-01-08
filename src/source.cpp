@@ -12,6 +12,9 @@ int main(int argc, char** argv)
     Cartridge::Cartridge cartridge = Cartridge::Cartridge("roms/cpu_instrs/cpu_instrs.gb");
     
     gb.LoadCartridge(&cartridge);
+
+    gb.DumpMemMap();
+    exit(1);
     gb.Start();
 
     // For now the display is seperate from the gb

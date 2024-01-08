@@ -61,8 +61,22 @@ namespace GameBoy
             logger.Log(ERROR, "Unable to dump %d bytes starting from offset %d", amount, offset);
             return;
         }
-        
-        // int cursor = 0;
+
+        int* loc = (int*)&mState->memory.base + offset;
+        // std::cout << loc + 1 << std::endl;
+        // std::cout << mState->memory.base << std::endl;
+        for (int cursor = 0; cursor < amount; cursor++) {
+            if (cursor >= 16) {
+                fprintf(stdout, "\n");
+                cursor = 0;
+            }
+
+            if (cursor % 2 == 0)
+                fprintf(stdout, " ");
+
+            fprintf(stdout, "%02X", (char)*loc);
+            loc += 1;
+        }
         // auto printByte = [&](const byte& b) -> void {   
         //     if (cursor >= 16) {
         //         fprintf(stdout, "\n");
