@@ -63,8 +63,9 @@ namespace GameBoy
         }
 
         int* loc = (int*)&mState->memory.base + offset;
-        // std::cout << loc + 1 << std::endl;
-        // std::cout << mState->memory.base << std::endl;
+        std::cerr << amount << "\n";
+        std::cerr << std::hex << (int)*loc << "\n";
+        std::cerr << loc + amount << "\n\n";
         for (int cursor = 0; cursor < amount; cursor++) {
             if (cursor >= 16) {
                 fprintf(stdout, "\n");
@@ -76,6 +77,7 @@ namespace GameBoy
 
             fprintf(stdout, "%02X", (char)*loc);
             loc += 1;
+            std::cerr << loc << "\n";
         }
         // auto printByte = [&](const byte& b) -> void {   
         //     if (cursor >= 16) {
