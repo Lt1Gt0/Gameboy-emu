@@ -27,6 +27,7 @@ namespace GameBoy
         assert(cartridge != nullptr);
 
         mCartidge = cartridge;
+
         logger.Log(INFO, "Loaded cartidge into gameboy");
     }
 
@@ -57,29 +58,48 @@ namespace GameBoy
     // FIXME
     void Classic::DumpMemMap(int offset, int amount)
     {
+
+
         if (amount + offset > MEM_MAP_SIZE) {
             logger.Log(ERROR, "Unable to dump %d bytes starting from offset %d", amount, offset);
             return;
         }
 
-        int* loc = (int*)&mState->memory.base + offset;
-        std::cerr << amount << "\n";
-        std::cerr << std::hex << (int)*loc << "\n";
-        std::cerr << loc + amount << "\n\n";
-        for (int cursor = 0; cursor < amount; cursor++) {
-            if (cursor >= 16) {
-                fprintf(stdout, "\n");
-                cursor = 0;
+        int count = 1;
+        // byte test = 11;
+        // ((byte*)(mState->memory.base))[0] = test;
+        for (int i = 0; i < amount; i++, count++) {
+            // printf("%02X", static_cast<byte*>(mState->memory.base)[i]);
+            printf("%02X", static_cast<byte*>(mState->memory.base)[i]);
+
+            if (count % 2 == 0)
+                printf(" ");
+
+            if (count % 8 == 0) {
+                printf("\n");
+                count = 0;
             }
-
-            if (cursor % 2 == 0)
-                fprintf(stdout, " ");
-
-            fprintf(stdout, "%02X", (char)*loc);
-            loc += 1;
-            std::cerr << loc << "\n";
         }
-        // auto printByte = [&](const byte& b) -> void {   
+
+        // int count = 1;
+        // for (size_t i = 0; i < sizeof(mMemoryMap); i++, count++) {
+        //     printf("%02X", mMemoryMap[i]);
+        //     
+        //     if (count % 2 == 0) {
+        //         printf(" ");
+        //     }
+        //
+        //     if (count % 8 == 0) {
+        //         printf("\n");
+        //         count = 0;
+        //     }
+        // }
+
+        // int* loc = (int*)&mState->memory.base + offset;
+        // std::cerr << amount << "\n";
+        // std::cerr << std::hex << (int)*loc << "\n";
+        // std::cerr << loc + amount << "\n\n";
+        // for (int cursor = 0; cursor < amount; cursor++) {
         //     if (cursor >= 16) {
         //         fprintf(stdout, "\n");
         //         cursor = 0;
@@ -88,11 +108,24 @@ namespace GameBoy
         //     if (cursor % 2 == 0)
         //         fprintf(stdout, " ");
         //
-        //     fprintf(stdout, "%02X", b);
-        //     cursor++;
-        // };
-        //
-        // std::for_each_n(mMemory.mMap.begin(), amount, printByte);
-        fprintf(stdout, "\n");
+        //     fprintf(stdout, "%02X", (char)*loc);
+        //     loc += 1;
+        //     std::cerr << loc << "\n";
+        // }
+        // // auto printByte = [&](const byte& b) -> void {   
+        // //     if (cursor >= 16) {
+        // //         fprintf(stdout, "\n");
+        // //         cursor = 0;
+        // //     }
+        // //
+        // //     if (cursor % 2 == 0)
+        // //         fprintf(stdout, " ");
+        // //
+        // //     fprintf(stdout, "%02X", b);
+        // //     cursor++;
+        // // };
+        // //
+        // // std::for_each_n(mMemory.mMap.begin(), amount, printByte);
+        // fprintf(stdout, "\n");
     }
 }
