@@ -1,6 +1,4 @@
 #include "cartridge/cartridge.hpp"
-
-#include <iomanip>
 #include "utils/types.hpp"
 #include "utils/logger.hpp"
 #include <iostream>
@@ -37,14 +35,17 @@ namespace GameBoy
 
         void Cartridge::DumpContents()
         {
-            for (size_t i = 1; i <= CARTIDGE_MAX_SIZE ; i++) {
-                std::cout << std::hex << std::setfill('0') << std::setw(2) << std::uppercase << int(mContents[i-1]);
+            int count = 1;
+            for (size_t i = 0; i < CARTIDGE_MAX_SIZE; i++, count++) {
+                printf("%02X", mContents[i]);
 
-                if (i % 2 == 0)
-                    std::cout << " ";
+                if (count % 2 == 0)
+                    printf(" ");
 
-                if (i % 16 == 0)
-                    std::cout << "\n";
+                if (count % 8 == 0) {
+                    printf("\n");
+                    count = 0;
+                }
             }
 
             std::cout << std::endl;

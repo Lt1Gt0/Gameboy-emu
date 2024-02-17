@@ -28,6 +28,13 @@ namespace GameBoy
 
         mCartidge = cartridge;
 
+        memcpy(mState->memory.base + RomBank0_16k, mCartidge->mContents, Cartridge::CARTIDGE_MAX_SIZE);
+        // FIXME
+        // for (size_t i = 0; i <= Cartridge::CARTIDGE_MAX_SIZE; i++) {
+            // ((byte*)(mState->memory.base))[RomBank0_16k + i] = mCartidge->mContents[i];
+        // }
+        
+
         logger.Log(INFO, "Loaded cartidge into gameboy");
     }
 

@@ -25,7 +25,7 @@ int main(int argc, char** argv)
     
     gb.LoadCartridge(&cartridge);
 
-    // gb.DumpMemMap();
+    gb.DumpMemMap();
     exit(1);
     gb.Start();
 
