@@ -16,7 +16,6 @@ namespace GameBoy
                 ~CPU();
 
                 Registers mRegs;
-                int ExecuteInstruction();
                 int BurnBootRom(Cartridge::Cartridge* cartridge, const char* path = "roms/boot/dmg.bin");
 
             private:

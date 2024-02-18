@@ -1,4 +1,5 @@
 #include "gameboy/classic.hpp"
+#include "cpu/instructions.hpp"
 #include "utils/logger.hpp"
 #include "utils/common.hpp"
 
@@ -53,7 +54,20 @@ namespace GameBoy
 
         // Perform execution cycle
         while (true) {
-            mState->cpu.ExecuteInstruction();
+            // FIXME
+            //{
+                // Fetch
+                byte nextOp = GameBoy::MemReadByte(&mState->memory, mState->cpu.mRegs.PC);
+
+                // Decode
+                CPU::Instruction instruction = GameBoy::CPU::GetInstruction(nextOp);
+
+                // TODO: Execute 
+
+                // At the same time of excecution, the cpu should fetch the next opcode
+                instruction.targetFunc(mState, mState->cpu.mRegs.PC, nextOp);
+                
+            //}
         }
     }
 

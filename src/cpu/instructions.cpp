@@ -22,7 +22,6 @@ namespace GameBoy
             switch (opcode) {
                 case 0x02:
                 {
-
                     break;
                 }
                 case 0x06:
@@ -319,10 +318,12 @@ namespace GameBoy
                 }
                 case 0x7E:
                 {
+                    state->cpu.mRegs.AF
                     break;
                 }
                 case 0x7F:
                 {
+                    
                     break;
                 }
                 default:
@@ -336,6 +337,8 @@ namespace GameBoy
 
         int op_word_ld(State* state, UNUSED word basePC, byte opcode)
         {
+            state->cpu.mRegs.PC++;
+
             switch(opcode) {
                 case 0x01:
                 {
@@ -1065,6 +1068,11 @@ namespace GameBoy
             }
 
             return 0;
+        }
+
+        Instruction GetInstruction(byte opcode) {
+            std::map<byte, Instruction> instrMap = GetInstructionMap();
+            return instrMap.at(opcode);
         }
 
         std::map<byte, Instruction> GetInstructionMap()
