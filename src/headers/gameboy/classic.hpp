@@ -19,8 +19,9 @@ namespace GameBoy
             void DumpMemMap(int offset = MEM_MAP_OFFSET::RomBank0_16k, int amount = MEM_MAP_SIZE);
 
             State* mState;
-            Cartridge::Cartridge* mCartidge;
+            Cartridge::Cartridge* mCartridge;
         private:
+            byte* ReadCartridge(int offset, int count);
             void InitMemMap();
     };
 }

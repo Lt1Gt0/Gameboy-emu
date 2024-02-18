@@ -4,6 +4,7 @@
 
 Logger logger;
 using namespace GameBoy;
+
 int main(int argc, char** argv) 
 {
     logger = Logger("logs/", "info");
@@ -20,15 +21,14 @@ int main(int argc, char** argv)
         path = argv[1];
     }
 
+    // Initialize gameboy classic
     Classic gb = Classic();
-    Cartridge::Cartridge cartridge = Cartridge::Cartridge(path);
-    
-    gb.LoadCartridge(&cartridge);
 
-    gb.DumpMemMap();
-    exit(1);
+    // Initialize cartridge and load data from file [path] into memory
+    Cartridge::Cartridge cartridge = Cartridge::Cartridge(path);
+    gb.LoadCartridge(&cartridge);
     gb.Start();
 
     // For now the display is seperate from the gb
-    Display display = Display();
+    // Display display = Display();
 }

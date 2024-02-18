@@ -20,6 +20,16 @@ namespace GameBoy
 
         }
 
+        byte* Cartridge::Read(int offset, int count)
+        {
+            if (offset + count > CARTIDGE_MAX_SIZE)
+                return nullptr;
+
+            byte* buf = new byte[count];
+            memcpy(buf, mContents + offset, count);
+            return buf;
+        }
+
         int Cartridge::LoadContents(std::string_view path)
         {
             // Reset the current contents of the loaded data

@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <iostream>
 #include "logger.hpp"
+#include "utils/types.hpp"
+
 #define OPT [[maybe_unused]]
 
 enum class Severity {
@@ -48,6 +50,22 @@ namespace Debug
         fprintf(stderr, "\n");
         fflush(stderr);
         va_end(ap);
+    }
+
+    inline void DumpByteBuf(byte* buf, size_t bufSize)
+    {
+        int count = 1;
+        for (size_t i = 0; i <= bufSize; i++, count++) {
+            printf("%02X", buf[i]);
+
+            if (count % 2 == 0)
+                printf(" ");
+
+            if (count % 8 == 0) {
+                printf("\n");
+                count = 0;
+            }
+        }
     }
 }
 
