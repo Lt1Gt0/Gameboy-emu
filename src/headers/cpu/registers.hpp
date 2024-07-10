@@ -20,7 +20,13 @@ namespace GameBoy
         };
 
         struct Registers {
-            word AF;
+            union {
+                struct {
+                    byte A;
+                    byte F;
+                };
+                word AF;
+            };
             
             union {
                 struct {

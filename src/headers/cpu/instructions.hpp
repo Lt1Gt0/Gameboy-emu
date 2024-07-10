@@ -20,6 +20,7 @@ namespace GameBoy
         };
 
         std::map<byte, Instruction> GetInstructionMap();
+        Instruction GetInstruction(byte opcode);
         int op_byte_ld(State* state, UNUSED word basePC, byte opcode);
         int op_word_ld(State* state, UNUSED word basePC, byte opcode);
         int op_byte_alu(State* state, UNUSED word basePC, byte opcode);

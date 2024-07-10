@@ -31,6 +31,7 @@ namespace GameBoy
                 ~Cartridge();
 
                 int LoadContents(std::string_view path);
+                byte* Read(int offset, int count);
 
                 // DEBUG FUNCTIONS
                 void DumpContents();
