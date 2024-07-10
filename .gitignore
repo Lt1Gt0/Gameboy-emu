@@ -4,4 +4,6 @@ compile_commands.json
 logs/
 obj/
 gameboy-emu
-redirects/
+
+err
+out
