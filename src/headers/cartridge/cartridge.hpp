@@ -36,8 +36,6 @@ namespace GameBoy
                 // DEBUG FUNCTIONS
                 void DumpContents();
                 byte* mContents;
-
-            private:
         };
     }
 }
