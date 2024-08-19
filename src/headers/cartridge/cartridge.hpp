@@ -23,6 +23,7 @@ namespace GameBoy
         };
 
         constexpr size_t CARTIDGE_MAX_SIZE {0x200000};
+        constexpr word CARTIDGE_HEADER_GRAPHIC_OFFSET {0x0104};
 
         class Cartridge
         {
@@ -36,6 +37,9 @@ namespace GameBoy
                 // DEBUG FUNCTIONS
                 void DumpContents();
                 byte* mContents;
+
+            private:
+                int InitHeader();
         };
     }
 }

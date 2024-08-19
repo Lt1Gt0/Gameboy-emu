@@ -12,12 +12,28 @@ namespace GameBoy
         Cartridge::Cartridge(std::string_view path)
         {
             mContents = new byte[CARTIDGE_MAX_SIZE];
+            int status = InitHeader();
+            if (status) {
+                std::cerr << "Cartridge Header\n";
+                return;
+            }
             LoadContents(path);
         }
 
         Cartridge::~Cartridge()
         {
 
+        }
+
+        // Setup nintendo graphic in header
+        int Cartridge::InitHeader()
+        {
+            // From address range $0100 - $014F load the header
+
+            // $0104 - $0133 contains nintendo logo
+            memcpy(mContents + CARTIDGE_HEADER_GRAPHIC_OFFSET, NINTENDO_GRAPHIC, sizeof(NINTENDO_GRAPHIC));
+
+            return 0;
         }
 
         byte* Cartridge::Read(int offset, int count)

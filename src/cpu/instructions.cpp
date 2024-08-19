@@ -318,7 +318,7 @@ namespace GameBoy
                 }
                 case 0x7E:
                 {
-                    state->cpu.mRegs.AF
+                    // state->cpu.mRegs.AF
                     break;
                 }
                 case 0x7F:
