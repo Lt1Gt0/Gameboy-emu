@@ -11,7 +11,11 @@ namespace GameBoy
     {
         enum TYPE {
             ROM_ONLY,
-            MBC1
+            MBC1,
+            MBC2,
+            MBC5,
+            RUMBLE,
+            HUC1
         };
 
         enum MBC1_MEM_MODE {
