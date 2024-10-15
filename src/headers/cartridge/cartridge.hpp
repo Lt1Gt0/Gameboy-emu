@@ -9,6 +9,15 @@ namespace GameBoy
 {
     namespace Cartridge
     {
+        enum TYPE {
+            ROM_ONLY,
+            MBC1
+        };
+
+        enum MBC1_MEM_MODE {
+
+        };
+
         // Scrolling Nintendo Graphic
         // location at address 0x68 -> 0x85 (0104 -> 0133)
         constexpr byte NINTENDO_GRAPHIC[48] = {
