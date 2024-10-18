@@ -41,9 +41,7 @@ namespace GameBoy
             logger.Log(INFO, "Loaded boot rom buffer");
 
             // Use boot rom data and overwrite the cartridge from 0x00 -> 0xFF with boot rom
-            // memcpy(bootRomBuf, cartridge->mContents, bootRomSize);
             memcpy(cartridge->mContents, bootRomBuf, bootRomSize);
-            cartridge->DumpContents();
 
             return 0;
         }
