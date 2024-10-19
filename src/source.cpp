@@ -21,11 +21,12 @@ int main(int argc, char** argv)
         path = argv[1];
     }
 
-    // Initialize gameboy classic
-    Classic gb = Classic();
 
     // Initialize cartridge and load data from file [path] into memory
     Cartridge::Cartridge cartridge = Cartridge::Cartridge(path);
+
+    // Initialize gameboy classic
+    Classic gb = Classic();
     gb.LoadCartridge(&cartridge);
     gb.Start();
 

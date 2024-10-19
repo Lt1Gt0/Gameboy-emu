@@ -10,9 +10,6 @@ namespace GameBoy
     {
         CPU::CPU()
         {
-            // Set up registers to start up addresses accoring to documentation
-            mRegs.PC = 0x100;
-            mRegs.SP = 0xFFFE;
         }
 
         CPU::~CPU()
