@@ -21,7 +21,6 @@ namespace GameBoy
 
     Classic::~Classic()
     {
-
     }
 
     void Classic::LoadCartridge(Cartridge::Cartridge* const cartridge)
@@ -61,7 +60,6 @@ namespace GameBoy
 
                 // At the same time of excecution, the cpu should fetch the next opcode
                 instruction.targetFunc(mState, mState->cpu.mRegs.PC, nextOp);
-                
             //}
         }
     }
