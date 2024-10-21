@@ -57,6 +57,7 @@ namespace GameBoy
                 CPU::Instruction instruction = GameBoy::CPU::GetInstruction(nextOp);
 
                 // TODO: Execute 
+                instruction.targetFunc(mState, mState->cpu.mRegs.PC, nextOp);
 
                 // At the same time of excecution, the cpu should fetch the next opcode
                 instruction.targetFunc(mState, mState->cpu.mRegs.PC, nextOp);
