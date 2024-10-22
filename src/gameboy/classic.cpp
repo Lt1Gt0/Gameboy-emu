@@ -41,6 +41,22 @@ namespace GameBoy
 
     void Classic::Start()
     {
+        // These functions should be part of the CPU class in all reality
+        // {
+        auto fetch = [](State* state) {
+            return GameBoy::MemReadByte(&state->memory, state->cpu.mRegs.PC);
+        };
+
+        auto execute = [](State* state, CPU::Instruction* instruction) {
+            // At the same time as execution the gameboy should also fetch the next instruction
+            // I have no idea how to do that currently so here is a commented out fetch call
+            // Also I know lambdas cant be called within eachother but its the thought that counts for now
+            // byte nextOp = fetch(state);
+            
+            instruction->targetFunc(state, state->cpu.mRegs.PC, instruction->opcode);
+        };
+        // }
+
         assert(mCartridge != nullptr);
 
         // Start by overwriting part of the cartridge with the boot rom (possible dmg0)
@@ -48,20 +64,9 @@ namespace GameBoy
 
         // Perform execution cycle
         while (true) {
-            // FIXME
-            //{
-                // Fetch
-                byte nextOp = GameBoy::MemReadByte(&mState->memory, mState->cpu.mRegs.PC);
-
-                // Decode
-                CPU::Instruction instruction = GameBoy::CPU::GetInstruction(nextOp);
-
-                // TODO: Execute 
-                instruction.targetFunc(mState, mState->cpu.mRegs.PC, nextOp);
-
-                // At the same time of excecution, the cpu should fetch the next opcode
-                instruction.targetFunc(mState, mState->cpu.mRegs.PC, nextOp);
-            //}
+            byte nextOp = fetch(mState);
+            CPU::Instruction instruction = GameBoy::CPU::GetInstruction(nextOp);
+            execute(mState, &instruction);
         }
     }
 

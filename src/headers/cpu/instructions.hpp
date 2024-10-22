@@ -15,6 +15,7 @@ namespace GameBoy
         typedef int (*OP)(State* state, UNUSED word basePC, byte opcode);
         struct Instruction {
             OP   targetFunc;
+            byte opcode;
             byte size;
             byte clockCycles;
         };
