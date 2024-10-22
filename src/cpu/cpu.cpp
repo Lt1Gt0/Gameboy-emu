@@ -35,11 +35,11 @@ namespace GameBoy
             FILE* fp = fopen(path, "rb");
             fread(bootRomBuf, 1, bootRomSize, fp);
             fclose(fp);
-            logger.Log(INFO, "Loaded boot rom buffer");
-
+           
             // Use boot rom data and overwrite the cartridge from 0x00 -> 0xFF with boot rom
             memcpy(cartridge->mContents, bootRomBuf, bootRomSize);
 
+            logger.Log(INFO, "Loaded boot rom buffer");
             return 0;
         }
     }

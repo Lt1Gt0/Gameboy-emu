@@ -358,7 +358,8 @@ namespace GameBoy
                 }
                 case 0x31:
                 {
-                    // state->mRegs.SP = MemReadWord()
+                    logger.Log(TRACE, "0x31");
+                    state->cpu.mRegs.SP = MemReadWord(&state->memory, state->cpu.mRegs.PC + 1);
                     break;
                 }
                 case 0xC1:

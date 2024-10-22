@@ -35,7 +35,7 @@ namespace GameBoy
         assert(buf != nullptr);
 
         // REMOVE LATER
-        Debug::DumpByteBuf(buf, count);
+        // Debug::DumpByteBuf(buf, count);
         return buf;
     }
 
@@ -61,10 +61,13 @@ namespace GameBoy
 
         // Start by overwriting part of the cartridge with the boot rom (possible dmg0)
         mState->cpu.BurnBootRom(mCartridge);
+        DumpMemMap();
+        exit(0);
 
         // Perform execution cycle
         while (true) {
             byte nextOp = fetch(mState);
+            logger.Log(TRACE, "Next op: %d", nextOp);
             CPU::Instruction instruction = GameBoy::CPU::GetInstruction(nextOp);
             execute(mState, &instruction);
         }
