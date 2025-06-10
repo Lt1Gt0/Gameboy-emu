@@ -8,6 +8,8 @@
 #include "logger.hpp"
 #include "utils/types.hpp"
 
+// If a argument is optional this can be appended in the argument list
+// for the function definition to declare it as optional
 #define OPT [[maybe_unused]]
 
 enum class Severity {
