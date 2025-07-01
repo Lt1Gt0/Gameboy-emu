@@ -10,6 +10,7 @@ namespace GameBoy
     {
         CPU::CPU()
         {
+            InitBootROM();
         }
 
         CPU::~CPU()
@@ -17,7 +18,7 @@ namespace GameBoy
 
         }
 
-        int InitBootROM()
+        int CPU::InitBootROM()
         {
             return 0;
         }

@@ -49,10 +49,14 @@ namespace GameBoy
 
                 // DEBUG FUNCTIONS
                 void DumpContents();
+
                 byte* mContents;
 
             private:
                 int InitHeader();
+                size_t GetFileSize();
+
+                std::string_view mPath;
         };
     }
 }

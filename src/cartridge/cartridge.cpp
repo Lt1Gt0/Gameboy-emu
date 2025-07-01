@@ -4,6 +4,8 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <iostream>
+#include <fstream>
 
 namespace GameBoy
 {
@@ -11,6 +13,7 @@ namespace GameBoy
     {
         Cartridge::Cartridge(std::string_view path)
         {
+            mPath = path;
             mContents = new byte[CARTIDGE_MAX_SIZE];
             int status = InitHeader();
             if (status) {
@@ -54,9 +57,13 @@ namespace GameBoy
 
         int Cartridge::LoadContents(std::string_view path)
         {
+            using namespace std;
+
             // Reset the current contents of the loaded data
             memset(mContents, 0, CARTIDGE_MAX_SIZE);
-
+            
+            // TODO: Make this use ifstream since I should be utilizing
+            // c++ standards in a project like this
             FILE* fp = fopen(path.data(), "rb");
             fread(mContents, 1, CARTIDGE_MAX_SIZE, fp);
             fclose(fp);
@@ -81,6 +88,19 @@ namespace GameBoy
             }
 
             std::cout << std::endl;
+        }
+
+        size_t Cartridge::GetFileSize()
+        {
+            std::streampos begin, end;
+            std::ifstream file(mPath.data(), std::ios::binary);
+
+            begin = file.tellg();
+            file.seekg(0, std::ios::end);
+            end = file.tellg();
+
+            file.close();
+            return end - begin;
         }
     }
 }
