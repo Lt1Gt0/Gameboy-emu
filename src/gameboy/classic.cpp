@@ -43,10 +43,10 @@ namespace GameBoy
     {
         // These functions should be part of the CPU class in all reality
         // {
-        auto fetch = [](State* state) {
-            logger.Log(TRACE, "Fetching next byte");
-            return GameBoy::MemReadByte(&state->memory, state->cpu.mRegs.PC);
-        };
+        // auto fetch = [](State* state) {
+        //     logger.Log(TRACE, "Fetching next byte");
+        //     return GameBoy::MemReadByte(state->cpu.mRegs.PC);
+        // };
 
         auto execute = [](State* state, CPU::Instruction* instruction) {
             // At the same time as execution the gameboy should also fetch the next instruction
@@ -61,14 +61,15 @@ namespace GameBoy
         assert(mCartridge != nullptr);
 
         // Start by overwriting part of the cartridge with the boot rom (possible dmg0)
-        mState->cpu.BurnBootRom(mCartridge);
-
-        // DumpMemMap();
-        // exit(0);
+        int status = mState->cpu.BurnBootRom(mCartridge);
+        if (status > 0) {
+            logger.Log(ERROR, "Issue burning boot rom\nExiting with status %i", status);
+            exit(status);
+        }
 
         // Perform execution cycle
         while (true) {
-            byte nextOp = fetch(mState);
+            byte nextOp = mState->memory.Fetch(mState->cpu.mRegs.PC + 1);
             logger.Log(TRACE, "Next op: %d", nextOp);
             exit(1);
 

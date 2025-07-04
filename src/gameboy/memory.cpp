@@ -3,30 +3,35 @@
 
 namespace GameBoy
 {
-    void* MemRef(Memory* mem, word offset)
+    byte Memory::Fetch(size_t offset)
     {
-        return (void*)((uintptr_t)mem->base | offset);
+        return ReadByte(offset);
     }
 
-    byte MemReadByte(Memory* mem, word offset)
+    void* Memory::Ref(word offset)
     {
-        return *(byte*)MemRef(mem, offset);
+        return (void*)((uintptr_t)this->base | offset);
     }
 
-    word MemReadWord(Memory* mem, word offset)
+    byte Memory::ReadByte(word offset)
     {
-        return *(word*)MemRef(mem, offset);
+        return *(byte*)Ref(offset);
     }
 
-    void MemWriteByte(Memory* mem, word offset, byte value)
+    word Memory::ReadWord(word offset)
     {
-        byte* target = (byte*)MemRef(mem, offset);
+        return *(word*)Ref(offset);
+    }
+
+    void Memory::WriteByte(word offset, byte value)
+    {
+        byte* target = (byte*)Ref(offset);
         *target = value;
     }
 
-    void MemWriteWord(Memory* mem, word offset, word value)
+    void Memory::WriteWord(word offset, word value)
     {
-        word* target = (word*)MemRef(mem, offset);
+        word* target = (word*)Ref(offset);
         *target = value;
     }
 }

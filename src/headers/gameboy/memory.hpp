@@ -3,6 +3,7 @@
 #define _GAMEBOY_MEMORY_HPP_
 
 #include "utils/types.hpp"
+#include <stddef.h>
 
 namespace GameBoy
 {
@@ -24,16 +25,18 @@ namespace GameBoy
     };
 
     struct Memory {
-        void* base;
+        public: 
+            byte Fetch(size_t offset);
+            void* base;
+
+            void* Ref(word offset);
+
+            void WriteByte(word offset, byte value);
+            void WriteWord(word offset, word value);
+
+            byte ReadByte(word offset);
+            word ReadWord(word offset);
     };
-
-    void* MemRef(Memory* mem, word offset);
-
-    void MemWriteByte(Memory* mem, word offset, byte value);
-    void MemWriteWord(Memory* mem, word offset, word value);
-
-    byte MemReadByte(Memory* mem, word offset);
-    word MemReadWord(Memory* mem, word offset);
 }
 
 #endif // _GAMEBOY_MEMORY_HPP_

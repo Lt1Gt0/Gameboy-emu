@@ -76,13 +76,13 @@ namespace GameBoy
         {
             int count = 1;
             for (size_t i = 0; i < CARTIDGE_MAX_SIZE; i++, count++) {
-                printf("%02X", mContents[i]);
+                fprintf(stdout, "%02X", mContents[i]);
 
                 if (count % 2 == 0)
-                    printf(" ");
+                    fprintf(stdout, " ");
 
                 if (count % 8 == 0) {
-                    printf("\n");
+                    fprintf(stdout, "\n");
                     count = 0;
                 }
             }
