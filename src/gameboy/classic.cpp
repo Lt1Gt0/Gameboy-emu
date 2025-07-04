@@ -44,6 +44,7 @@ namespace GameBoy
         // These functions should be part of the CPU class in all reality
         // {
         auto fetch = [](State* state) {
+            logger.Log(TRACE, "Fetching next byte");
             return GameBoy::MemReadByte(&state->memory, state->cpu.mRegs.PC);
         };
 
@@ -61,13 +62,16 @@ namespace GameBoy
 
         // Start by overwriting part of the cartridge with the boot rom (possible dmg0)
         mState->cpu.BurnBootRom(mCartridge);
-        DumpMemMap();
-        exit(0);
+
+        // DumpMemMap();
+        // exit(0);
 
         // Perform execution cycle
         while (true) {
             byte nextOp = fetch(mState);
             logger.Log(TRACE, "Next op: %d", nextOp);
+            exit(1);
+
             CPU::Instruction instruction = GameBoy::CPU::GetInstruction(nextOp);
             execute(mState, &instruction);
         }

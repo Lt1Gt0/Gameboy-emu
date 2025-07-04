@@ -17,6 +17,9 @@ void ChangeRomPath(OPT int inputCount, OPT char** inputVal)
 
 int main(int argc, char** argv) 
 {
+    // FIXME: For some reason the logger does not work during some executions
+    // this isnt a major issue since the program could be re-run until output
+    // is shown but that should not be the main fix
     logger = Logger("logs/", "info");
     
     // TODO: Check for debug flag passed to pre proc 
@@ -53,10 +56,10 @@ int main(int argc, char** argv)
 
     // Initialize cartridge and load data from file [path] into memory
     Cartridge::Cartridge cartridge = Cartridge::Cartridge(romPath);
-    cartridge.DumpContents();
+    // cartridge.DumpContents();
 
     // Initialize gameboy classic
-    // Classic gb = Classic();
-    // gb.LoadCartridge(&cartridge);
-    // gb.Start();
+    Classic gb = Classic();
+    gb.LoadCartridge(&cartridge);
+    gb.Start();
 }
