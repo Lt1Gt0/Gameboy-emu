@@ -32,13 +32,23 @@ namespace GameBoy
             byte* bootRomBuf = new byte[bootRomSize];
             memset(bootRomBuf, 0, bootRomSize);
 
+            // FIXME: Should be using istream instead of raw file pointer
             // Read Boot rom file into memory
             FILE* fp = fopen(path, "rb");
+            
+            if (fp == nullptr) {
+                return -1;
+            }
+
             fread(bootRomBuf, 1, bootRomSize, fp);
             fclose(fp);
-           
+
             // Use boot rom data and overwrite the cartridge from 0x00 -> 0xFF with boot rom
             memcpy(cartridge->mContents, bootRomBuf, bootRomSize);
+
+            if (cartridge->mContents == nullptr) {
+                return -1;
+            }
 
             logger.Log(INFO, "Loaded boot rom buffer");
             return 0;

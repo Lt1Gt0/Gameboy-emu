@@ -41,13 +41,7 @@ namespace GameBoy
 
     void Classic::Start()
     {
-        // These functions should be part of the CPU class in all reality
-        // {
-        // auto fetch = [](State* state) {
-        //     logger.Log(TRACE, "Fetching next byte");
-        //     return GameBoy::MemReadByte(state->cpu.mRegs.PC);
-        // };
-
+        // This functions should be part of the CPU class in all reality
         auto execute = [](State* state, CPU::Instruction* instruction) {
             // At the same time as execution the gameboy should also fetch the next instruction
             // I have no idea how to do that currently so here is a commented out fetch call
@@ -56,7 +50,6 @@ namespace GameBoy
             
             instruction->targetFunc(state, state->cpu.mRegs.PC, instruction->opcode);
         };
-        // }
 
         assert(mCartridge != nullptr);
 
@@ -67,11 +60,14 @@ namespace GameBoy
             exit(status);
         }
 
+        DumpMemMap(MEM_MAP_OFFSET::RomBank0_16k, MEM_MAP_OFFSET::RomSwitchable_16k);
+        return;
+
         // Perform execution cycle
         while (true) {
             byte nextOp = mState->memory.Fetch(mState->cpu.mRegs.PC + 1);
             logger.Log(TRACE, "Next op: %d", nextOp);
-            exit(1);
+            break;
 
             CPU::Instruction instruction = GameBoy::CPU::GetInstruction(nextOp);
             execute(mState, &instruction);
