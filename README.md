@@ -8,6 +8,8 @@ sdl2
 
 rgbasm (optional)
 
+Catch2
+
 ## Building
 
 ## Running
